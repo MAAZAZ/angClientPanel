@@ -1,0 +1,27 @@
+<div class="row m-3">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-center">
+                    <span class="">
+                    <i class="fa fa-lock text-info"></i> Login </span> <span class="text-info">Panel</span> Client
+                </h1>
+                <form #f="ngForm" (ngSubmit)="login(f)">
+                    <div class="form-group">
+                        <label for="">Login</label>
+                        <input type="text" #email="ngModel" [ngModel]="" class="form-control" name="email">
+                        <label for="">Password</label>
+                        <input type="password" #password="ngModel" [ngModel]="" class="form-control" name="password">
+                        <div class="row d-flex justify-content-center m-2">
+                            <button type="submit" class="btn btn-primary col-md-6 btn-block m-1">Connexion</button>
+                            <button type="button" class="btn btn-danger col-md-6 btn-block m-1" (click)="loginGoogle(f)">
+                                <i class="fa fa-google-plus"></i>
+                                Connexion with Google
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>  
+    </div>
+</div>

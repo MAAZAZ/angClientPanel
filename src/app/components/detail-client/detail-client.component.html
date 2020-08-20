@@ -1,0 +1,78 @@
+<div class="container">
+    <flash-messages></flash-messages>
+</div>
+
+<div class="row m-4">
+    <div class="col-md-6">
+        <a routerLink="/" class="btn btn-info">
+            <i class="fa fa-arrow-circle-left"></i> Back to Dashboard
+        </a>
+    </div>
+    <div class="col-md-6">
+    <div class="btn-group float-right">
+        <a class="btn btn-primary mr-1" routerLink="/client/edit/{{id}}">
+            <i class="fa fa-pencil"></i> Edit
+        </a>
+        <a class="btn btn-danger ml-1" (click)="deleteClient()">
+            <i class="fa fa-trash"></i> Delete
+        </a>
+    </div>
+    </div>
+</div>
+
+<div class="card">
+<div class="card-body">
+<div class="row">
+    <div class="col-md-8">
+    <div class="col-md-12 m-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">{{ cl.firstName }} {{ cl.lastName }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 m-3">
+        <div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Firstname</h4>
+                <p class="card-text text-center">{{ cl.firstName }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Lastname</h4>
+                <p class="card-text text-center">{{ cl.lastName }}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12 m-3">
+        <div class="list-group">
+            <li class="list-group-item"><i class="fa fa-phone"></i> Phone : {{ cl.phone }}</li>
+            <li class="list-group-item"><i class="fa fa-envelope-open"></i> @mail : {{ cl.email }}</li>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <button class="btn" [ngClass]="{'btn-success': !balanceShow , 'btn-warning': balanceShow}" (click)="balanceShow=!balanceShow">
+            <h4>Balance</h4> {{cl.balance | currency: 'EUR' :'symbol'}}
+        </button>
+        <div class="m-4" *ngIf="balanceShow">
+            <form #f="ngForm" (ngSubmit)="updateBalance(f)">
+                <div class="input-group">
+                    <input type="number" class="form-control" #balance="ngModel" name="balance" [(ngModel)]="cl.balance"> &nbsp;
+                    <div class="btn-group">
+                        <button class="btn btn-success">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>

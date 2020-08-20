@@ -1,0 +1,48 @@
+<div class="row m-4">
+    <div class="col-md-6">
+    <a routerLink="/client/add" class="btn btn-success">
+        <i class="fa fa-plus-circle"></i> New Client
+    </a>
+    </div>
+    <div class="col-md-6">
+        <h4 class="text-right">Total : {{_total |currency:'EUR':'symbol'}}</h4>
+    </div>
+</div>
+
+
+<div class="card my-4">
+    <div class="card-body">
+        <h4 class="card-title">List Clients</h4>
+        <div class="form-group float-right">
+            <input type="text" #query (keyup)="search(query.value)" class="form-control" placeholder="Search...">
+        </div>
+        <table class="table table-striped table-inverse">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of tableCLient" (dblclick)=" deleteClient(c.id)">
+                        <td scope="row">{{c.firstName}} {{c.lastName}}</td>
+                        <td>{{c.phone}}</td>
+                        <td>{{c.email}}</td>
+                        <td>{{c.balance | currency:'EUR':'symbol'}}</td>
+                        <td class="float-right">
+                            <a routerLink="/client/show/{{c.id}}" class="btn btn-info mr-1">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
+                           
+                            <a routerLink="/client/edit/{{c.id}}" class="btn btn-warning ml-1">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
